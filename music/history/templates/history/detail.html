@@ -1,0 +1,16 @@
+<h1>Songs by {{ artist.name }}</h1>
+
+<ul>
+  {% for song in artist.song_set.all %}
+  <p><li>
+    Name: {{song.title}}<br />
+    Album: {{song.album}}
+  </li></p>
+  {% endfor %}
+</ul>
+
+<form action="{% url 'history:addSong' %}" method='post'>
+  {% csrf_token %}
+  <input type="text" name="songTitle" />
+  <input type="submit" value="Add a new song">
+</form>

@@ -1,0 +1,17 @@
+<h1>Artists Throughout History</h1>
+
+<ul>
+  {% for artist in artist_list %}
+  <li>
+    <a href="{% url 'history:detail' artist.id %}">
+      {{ artist.name }}
+    </a>
+  </li>
+  {% endfor %}
+</ul>
+
+<form action="{% url 'history:addArtist' %}" method='post'>
+  {% csrf_token %}
+  <input type="text" name="artistName" />
+  <input type="submit" value="Add a new artist">
+</form>
